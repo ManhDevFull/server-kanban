@@ -1,8 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import userRouter from "./src/routers/user"
+import storageRouter from "./src/routers/storage"
 import cors from 'cors'
 import mongoose from 'mongoose'
+import { veryfyToken } from './src/middlewares/veryfyToken'
 dotenv.config()
 
 const app = express()
@@ -10,6 +12,9 @@ const LINK_MONGODB='mongodb+srv://thanhmanhdangfa:asdfghjkl@cluster0.jzotb.mongo
 app.use(express.json())
 app.use(cors())
 app.use('/auth', userRouter)
+
+app.use(veryfyToken)
+app.use('/storage', storageRouter)
 
 
 
