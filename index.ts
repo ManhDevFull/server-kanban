@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import userRouter from "./src/routers/user"
 import storageRouter from "./src/routers/storage"
+import supplierRouter from "./src/routers/supplier"
 import cors from 'cors'
 import mongoose from 'mongoose'
 import { veryfyToken } from './src/middlewares/veryfyToken'
@@ -15,6 +16,7 @@ app.use('/auth', userRouter)
 
 app.use(veryfyToken)
 app.use('/storage', storageRouter)
+app.use('/suppliers', supplierRouter)
 
 
 
